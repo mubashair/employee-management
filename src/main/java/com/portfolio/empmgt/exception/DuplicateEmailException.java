@@ -1,5 +1,4 @@
 package com.portfolio.empmgt.exception;
-
 public class DuplicateEmailException extends RuntimeException {
 
 	public DuplicateEmailException(String message) {
@@ -13,6 +12,5 @@ public class DuplicateEmailException extends RuntimeException {
 
     The database's unique constraint remains important 
      because application-level checks alone cannot prevent every concurrent duplicate request.*/
-	
 
 }

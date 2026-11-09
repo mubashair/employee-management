@@ -2,16 +2,15 @@ package com.portfolio.empmgt.dto;
 
 public class EmployeeResponseDTO {
 	private Long employeeId;
-	private String employeeName;
-	private String email;
-	private String department;
-	private double salary;
-	
+    private String employeeName;
+    private String email;
+    private String department;
+    private double salary;
 	public EmployeeResponseDTO() {
 		
 	}
-	
 	public EmployeeResponseDTO(Long employeeId, String employeeName, String email, String department, double salary) {
+		
 		this.employeeId = employeeId;
 		this.employeeName = employeeName;
 		this.email = email;
@@ -48,5 +47,6 @@ public class EmployeeResponseDTO {
 	public void setSalary(double salary) {
 		this.salary = salary;
 	}
-	
+    
+    
 }

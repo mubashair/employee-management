@@ -2,33 +2,43 @@ package com.portfolio.empmgt.dto;
 
 import java.time.LocalDateTime;
 import java.util.Map;
-
+/**
+ * Data Transfer Object (DTO) representing a standardized API error response.
+ * Used to send structured error details back to the client when exceptions occur.
+ */
 public class ApiErrorResponse {
-	private LocalDateTime timeStamp; // Date and time when the error occurred.
-	private int status;//Http status code 404, 200, 500
-	
-	//Short description of Http error such as "Bad Request" or "Not Found"
+	 // --- Fields (Payload Data) ---
+
+    // The exact date and time when the error occurred
+	private LocalDateTime timeStamp;
+	// The HTTP status code (e.g., 400, 404, 500)
+	private int status;
+	// The short reason phrase or HTTP error name (e.g., "Bad Request", "Not Found")
 	private String error;
-	//Detailed explanation of error
-	//Example employee not foud with id 500
+	// A user-friendly message explaining why the error occurred
 	private String message;
-	//API endpoint where error occurred
-	//Example api/employees/100
+	// The specific API endpoint or URL path where the error happened (e.g., "/api/employees/1")
 	private String path;
-	//Stores Validation errors for individual fields
-	// Example:
-    // "employeeName" -> "Employee name is required"
-    // "email"        -> "Email must be valid"
+	// Stores field-specific validation errors (e.g., "email" -> "Email is invalid")
+    // This is particularly useful for handling HTTP 400 Bad Request form validation failures.
 	private Map<String, String> validationErrors;
-	// Default constructor.
-    // Allows an empty ApiErrorResponse object to be created.
+	// --- Constructors ---
+
+    /**
+     * Default no-argument constructor.
+     * Required for JSON serialization/deserialization frameworks like Jackson.
+     */
 	public ApiErrorResponse() {
 		
 	}
-	// Parameterized constructor.
-    // Creates an error response with all fields initialized.
+	 /**
+     * All-arguments constructor.
+     * Allows quick instantiation of the error response payload with all fields populated.
+     */
+
 	public ApiErrorResponse(LocalDateTime timeStamp, int status, String error, String message, String path,
 			Map<String, String> validationErrors) {
+		super();
 		this.timeStamp = timeStamp;
 		this.status = status;
 		this.error = error;
@@ -36,45 +46,44 @@ public class ApiErrorResponse {
 		this.path = path;
 		this.validationErrors = validationErrors;
 	}
-	//Return the timestamp
-	public LocalDateTime getTimeStamp() {
-		return timeStamp;
-	}
-	//Update the timestamp
-	public void setTimeStamp(LocalDateTime timeStamp) {
-		this.timeStamp = timeStamp;
-	}
-	public int getStatus() {
-		return status;
-	}
-	public void setStatus(int status) {
-		this.status = status;
-	}
-	public String getError() {
-		return error;
-	}
-	public void setError(String error) {
-		this.error = error;
-	}
-	public String getMessage() {
-		return message;
-	}
-	public void setMessage(String message) {
-		this.message = message;
-	}
-	public String getPath() {
-		return path;
-	}
-	public void setPath(String path) {
-		this.path = path;
-	}
-	public Map<String, String> getValidationErrors() {
-		return validationErrors;
-	}
-	public void setValidationErrors(Map<String, String> validationErrors) {
-		this.validationErrors = validationErrors;
-	}
-	
-	
-	
+    // --- Getters and Setters ---
+    // Standard boilerplate methods required to read from and write to the private fields.
+	 public LocalDateTime getTimeStamp() {
+		 return timeStamp;
+	 }
+	 public void setTimeStamp(LocalDateTime timeStamp) {
+		 this.timeStamp = timeStamp;
+	 }
+	 public int getStatus() {
+		 return status;
+	 }
+	 public void setStatus(int status) {
+		 this.status = status;
+	 }
+	 public String getError() {
+		 return error;
+	 }
+	 public void setError(String error) {
+		 this.error = error;
+	 }
+	 public String getMessage() {
+		 return message;
+	 }
+	 public void setMessage(String message) {
+		 this.message = message;
+	 }
+	 public String getPath() {
+		 return path;
+	 }
+	 public void setPath(String path) {
+		 this.path = path;
+	 }
+	 public Map<String, String> getValidationErrors() {
+		 return validationErrors;
+	 }
+	 public void setValidationErrors(Map<String, String> validationErrors) {
+		 this.validationErrors = validationErrors;
+	 }
+
+
 }

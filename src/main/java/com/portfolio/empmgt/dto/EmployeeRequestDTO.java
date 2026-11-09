@@ -1,29 +1,24 @@
 package com.portfolio.empmgt.dto;
 
-import jakarta.persistence.Column;
-
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PositiveOrZero;
 
 public class EmployeeRequestDTO {
-	
 	@NotBlank(message = "Employee name is required")
-	private String employeeName;
-	
-	@Email(message = "Enter a valid email address")
-	@NotBlank(message = "Email is required")
-	@Column(unique = true, nullable = false)
-	private String email;
-	
-	private String department;
-	
-	@NotNull(message = "Salary is required")
-	@PositiveOrZero(message = "Salary cannot be negative")
-	private Double salary;
+    private String employeeName;
 
-	//Getters and Setters
+    @NotBlank(message = "Email is required")
+    @Email(message = "Enter a valid email address")
+    private String email;
+
+    private String department;
+
+    @NotNull(message = "Salary is required")
+    @PositiveOrZero(message = "Salary cannot be negative")
+    private Double salary;
+
 	public String getEmployeeName() {
 		return employeeName;
 	}
@@ -48,15 +43,13 @@ public class EmployeeRequestDTO {
 		this.department = department;
 	}
 
-	public double getSalary() {
+	public Double getSalary() {
 		return salary;
 	}
 
 	public void setSalary(Double salary) {
 		this.salary = salary;
-	}
-	
-	
-	
-	
+	}      
+    
+    
 }
