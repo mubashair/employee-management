@@ -1,15 +1,18 @@
-package com.portfolio.empmgt.service;
+  package com.portfolio.empmgt.service;
 
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.portfolio.empmgt.entity.Employee;
 import com.portfolio.empmgt.repo.EmployeeRepository;
 
 @Service
+//Manages database transactions automatically for methods in this class
+@Transactional
 public class EmployeeService {
 	private final EmployeeRepository employeeRepository;
 	
@@ -17,6 +20,7 @@ public class EmployeeService {
 	public EmployeeService(EmployeeRepository employeeRepository) {
 		this.employeeRepository = employeeRepository;
 	}
+	
 	//Create Employee
 	public Employee createEmployee(Employee employee) {
 		employee.setEmployeeId(null);
