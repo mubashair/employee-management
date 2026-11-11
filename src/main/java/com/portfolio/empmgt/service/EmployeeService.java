@@ -7,9 +7,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
+import com.portfolio.empmgt.DTO.EmployeeResponseDTO;
 import com.portfolio.empmgt.entity.Employee;
 import com.portfolio.empmgt.repo.EmployeeRepository;
 
+/**
+ * Service class that handles the core business logic for Employee management.
+ * It serves as an intermediary layer between the REST Controller and the Database Repository.
+ */
 @Service
 //Manages database transactions automatically for methods in this class
 @Transactional
@@ -19,6 +24,28 @@ public class EmployeeService {
 	//Constructor Injection
 	public EmployeeService(EmployeeRepository employeeRepository) {
 		this.employeeRepository = employeeRepository;
+	}
+	/**
+     * Maps an Employee database entity into a clean, read-only Response DTO.
+     * This keeps sensitive database structures hidden from public API consumers.
+     */
+	public EmployeeResponseDTO convertToDTO(Employee employee) {
+		return new EmployeeResponseDTO(
+				employee.getEmployeeId(),
+				employee.getEmployeeName(),
+				employee.getEmail(),
+				employee.getDepartment(),
+				employee.getSalary()
+				);
+	}
+	/**
+     * Maps an incoming Request DTO into a fresh Employee database entity.
+     * This prepares user input data for persistent storage in the database.
+     */
+	public Employee convertToEntity(EmployeeResponseDTO dto) {
+		Employee employee = new Employee();
+		
+		return employee;
 	}
 	
 	//Create Employee
